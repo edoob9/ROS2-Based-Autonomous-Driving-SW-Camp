@@ -49,7 +49,7 @@ jobs:
       # Build for test coverage
       - name: Configure CMake flags and build exectables
         run: |
-          source /opt/ros/galactic/setup.bash
+          source /opt/ros/humble/setup.bash
           sudo apt install python3-rosdep
           sudo rosdep init
           rosdep update --include-eol-distros
