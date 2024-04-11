@@ -93,7 +93,8 @@ class IntegrateInfo():
       steering_command = -3
     elif road_gradient == 0:
       steering_command = 0
-
+    elif 0 < road_gradient and road_gradient <= 20:
+      steering_command = -3
     else:
       steering_command = 7
 
