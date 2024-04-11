@@ -9,7 +9,7 @@ on:
   # Triggered whenever a pull request is created on master
   pull_request:
     branches: ["main"]
-    types: [opened]
+    types: [edited]
 
 
 jobs:
