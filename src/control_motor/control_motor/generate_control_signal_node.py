@@ -89,7 +89,8 @@ class IntegrateInfo():
     # road gradient를 이용할 때 예시
     if road_gradient < 0:
       steering_command = -7
-
+    elif -30 <= road_gradient and road_gradient < 0:
+      steering_command = -3
     elif road_gradient == 0:
       steering_command = 0
 
