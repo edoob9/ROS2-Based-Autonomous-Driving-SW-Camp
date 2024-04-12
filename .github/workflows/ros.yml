@@ -76,5 +76,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # docker hub 퍼블리시
-      #- name: Publish to docker hub
-      #  run: docker push <docker_hub_username>/<docker_image_name>
+      - name: Publish to docker hub
+        run: docker push edenlee94/ros2_ci
