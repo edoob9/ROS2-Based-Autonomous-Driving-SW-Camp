@@ -79,6 +79,7 @@ jobs:
       - name: Push docker image
         run: |
           container_id=$(docker ps -q | head -n 1)
+          echo "The ID of the first running container is: $container_id"
           docker commit 4bcfe23df183 edenlee94/ros2_ci:first
         
 
