@@ -56,4 +56,29 @@ jobs:
           cd ros_ws
           rosdep install --from-paths src -y --ignore-src
           colcon build
-          ros2 run img_process img_grad
+
+  deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      # SOURCE 단계 - 저장소 Checkout
+      - name: Checkout-source code
+        uses: actions/checkout@v3
+
+      # Gradle 실행권한 부여
+      - name: Grant execute permission to gradlew
+        run: chmod +x ./gradlew
+
+      # docker image 빌드
+      #- name: Build docker image
+      #  run: docker build -t glorychoi/ubuntu2204_base_ros2_humble .
+
+      # docker hub 로그인
+      - name: Login docker hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # docker hub 퍼블리시
+      #- name: Publish to docker hub
+      #  run: docker push <docker_hub_username>/<docker_image_name>
