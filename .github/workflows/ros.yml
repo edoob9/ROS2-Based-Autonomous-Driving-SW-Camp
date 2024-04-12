@@ -80,7 +80,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ros2_test
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/ros2_test:v.1.0.0
       #- name: Build and push Docker images
       #  uses: docker/build-push-action@v3.0.0
       #  with:
