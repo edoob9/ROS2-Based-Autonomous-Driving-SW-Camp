@@ -82,6 +82,7 @@ jobs:
         run: |
           container_id=$(docker ps -q | head -n 1)
           echo "The ID of the first running container is: $container_id"
+          docker inspect --format='{{.Name}}' $(docker ps -q)
           docker commit $container_id edenlee94/ros2_ci:first
         
 
