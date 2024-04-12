@@ -71,28 +71,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       # Docker 이미지 Build (2)
-      - name: docker image build
-        run: docker build -t edenlee94/ros2_ci .
-        
-      - name: docker Hub push
-        run: docker push edenlee94/ros2_ci
-      # docker image 빌드
-      #- name: Build docker image
-      #  run: |
-      #    docker build -t ros2cicd:1.0.0 .
-      #    docker run -it ros2cicd:1.0.0 /bin/bash
-        
-      # docker image push
-      #- name: commit docker image
-      #  run: |
-      #    container_id=$(docker ps -q | head -n 1)
-      #    echo "The ID of the first running container is: $container_id"
-      #    docker inspect --format='{{.Name}}' $(docker ps -q)
-      #    docker commit $container_id edenlee94/ros2_ci:first
-        
-
-      # docker hub 퍼블리시
-      #- name: Publish to docker hub
-     #   run: | 
-     #     docker tag ros2cicd:1.0.0 edenlee94/ros2_ci
-     #     docker push edenlee94/ros2_ci
+      - 
+        name: Build and push Docker images
+        uses: docker/build-push-action@v3.0.0
+        with:
+          contect: .
+          file: ./Dockerfile
+          push: true
+          tags: edenlee95/ros2_ci
+          labels: latest
