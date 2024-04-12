@@ -65,8 +65,8 @@ jobs:
         uses: actions/checkout@v3
 
       # docker image 빌드
-      #- name: Build docker image
-      #  run: docker build -t glorychoi/ubuntu2204_base_ros2_humble .
+      - name: Build docker image
+        run: docker build -t glorychoi/ubuntu2204_base_ros2_humble .
 
       # docker hub 로그인
       - name: Login docker hub
