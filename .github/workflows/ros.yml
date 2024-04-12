@@ -64,16 +64,21 @@ jobs:
       - name: Checkout-source code
         uses: actions/checkout@v3
 
-      # docker image 빌드
-      - name: Build docker image
-        run: docker build -t my-ros2-image .
-
       # docker hub 로그인
       - name: Login docker hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # docker image 빌드
+      - name: Build docker image
+        run: docker build -t edenlee94/ros2_ci .
+        
+      # docker image push
+      - name: Push docker image
+        run: docker commit e40b3d1e51fa edenlee94/ros2_ci:first
+        
 
       # docker hub 퍼블리시
       - name: Publish to docker hub
