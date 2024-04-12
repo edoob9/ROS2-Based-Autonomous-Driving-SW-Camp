@@ -64,10 +64,6 @@ jobs:
       - name: Checkout-source code
         uses: actions/checkout@v3
 
-      # Gradle 실행권한 부여
-      - name: Grant execute permission to gradlew
-        run: chmod +x ./gradlew
-
       # docker image 빌드
       #- name: Build docker image
       #  run: docker build -t glorychoi/ubuntu2204_base_ros2_humble .
