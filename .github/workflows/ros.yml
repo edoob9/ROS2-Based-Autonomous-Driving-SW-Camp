@@ -71,12 +71,22 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       # Docker 이미지 Build (2)
-      - 
-        name: Build and push Docker images
-        uses: docker/build-push-action@v3.0.0
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Build and push
+        uses: docker/build-push-action@v3
         with:
-          contect: .
+          context: .
           file: ./Dockerfile
           push: true
-          tags: edenlee94/ros2_ci
-          labels: second
+          tags: ${{ secrets.DOCKER_USERNAME }}/ros2_test
+      #- name: Build and push Docker images
+      #  uses: docker/build-push-action@v3.0.0
+      #  with:
+      #    contect: .
+      #    file: ./Dockerfile
+      #    push: true
+      #    tags: edenlee94/ros2_ci
+      #    labels: second
+      
