@@ -79,7 +79,7 @@ jobs:
       - name: Push docker image
         run: |
           container_id=$(docker ps -q | head -n 1)
-          docker commit $container_id edenlee94/ros2_ci:first
+          docker commit 4bcfe23df183 edenlee94/ros2_ci:first
         
 
       # docker hub 퍼블리시
