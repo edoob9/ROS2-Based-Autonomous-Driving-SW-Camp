@@ -1,17 +1,3 @@
-################################################################################
-# 
-# Copyright (C) 2023
-# 
-# Dockerfile for ROS2-foxy
-#
-#   uBuntu Version : 20.04.5 (focal fossa)
-#   ROS2 : foxy
-#   gazebo : 6.12.0 (fortress)
-#   graphic driver : nvidia-driver-515 (RTX 1060 3GB) 
-#
-# by duvallee
-# 
-################################################################################
 FROM ubuntu:22.04
 FROM ros:humble
 
