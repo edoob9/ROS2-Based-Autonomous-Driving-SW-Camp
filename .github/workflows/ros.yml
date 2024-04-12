@@ -78,5 +78,5 @@ jobs:
           contect: .
           file: ./Dockerfile
           push: true
-          tags: edenlee95/ros2_ci
-          labels: latest
+          tags: edenlee94/ros2_ci
+          labels: second
