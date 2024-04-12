@@ -15,7 +15,7 @@ RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc && apt-k
 
 RUN sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://repo.ros2.org/ubuntu/$(lsb_release -cs) $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2.list'
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     ros-humble-desktop \
     && rm -rf /var/lib/apt/lists/*
 
