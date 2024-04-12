@@ -73,14 +73,16 @@ jobs:
 
       # docker image 빌드
       - name: Build docker image
-        run: docker build -t edenlee94/ros2_ci .
+        run: |
+          docker build -t edenlee94/ros2_ci .
+          docker run -it edenlee94/ros2_ci /bin/bash
         
       # docker image push
       - name: Push docker image
         run: |
           container_id=$(docker ps -q | head -n 1)
           echo "The ID of the first running container is: $container_id"
-          docker commit 4bcfe23df183 edenlee94/ros2_ci:first
+          docker commit $container_id edenlee94/ros2_ci:first
         
 
       # docker hub 퍼블리시
