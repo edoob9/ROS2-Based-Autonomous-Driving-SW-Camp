@@ -70,15 +70,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: build and release to DockerHub
-        env:
-          NAME: edenlee94 # 계정 명
-          REPO: ros2_ci # 레포 이름
-        run: |
-          docker build -t $REPO .
-          docker tag $REPO:latest $NAME/$REPO:latest
-          docker push $NAME/$REPO:latest
+      # Docker 이미지 Build (2)
+      - name: docker image build
+        run: docker build -t edenlee94/ros2_ci .
+        
+      - name: docker Hub push
+        run: docker push edenlee94/ros2_ci
       # docker image 빌드
       #- name: Build docker image
       #  run: |
