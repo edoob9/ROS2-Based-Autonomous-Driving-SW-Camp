@@ -1,3 +1,17 @@
+################################################################################
+# 
+# Copyright (C) 2023
+# 
+# Dockerfile for ROS2-foxy
+#
+#   uBuntu Version : 20.04.5 (focal fossa)
+#   ROS2 : foxy
+#   gazebo : 6.12.0 (fortress)
+#   graphic driver : nvidia-driver-515 (RTX 1060 3GB) 
+#
+# by duvallee
+# 
+################################################################################
 FROM ubuntu:22.04
 FROM ros:humble
 
@@ -72,6 +86,13 @@ RUN apt-get install --no-install-recommends -y \
                      libtinyxml2-dev \
                      libcunit1-dev
 # -----------------------------------------------------------------------------
+# container에 git 설치
+RUN apt-get install git -y
+    
+RUN mkdir /opt/app
+RUN git clone https://github.com/edoob9/ROS2-Based-Autonomous-Driving-SW-Camp.git
+
+
 # NVIDIA RTX 1060
 RUN apt-get install -y mesa-utils nvidia-driver-515
 
@@ -88,9 +109,6 @@ RUN apt-get install -y ros-humble-xacro
 RUN apt-get install -y python3-colcon-common-extensions 
 RUN apt-get install -y python3-vcstool
 
-# -----------------------------------------------------------------------------
-# gazebo
-RUN apt-get install -y ignition-fortress
 
 # -----------------------------------------------------------------------------
 # clean update files
@@ -155,3 +173,5 @@ RUN chmod 0440 /etc/sudoers
 # -----------------------------------------------------------------------------
 USER $RUN_USER
 WORKDIR /home/$RUN_USER
+
+
