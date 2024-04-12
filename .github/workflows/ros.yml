@@ -77,7 +77,9 @@ jobs:
         
       # docker image push
       - name: Push docker image
-        run: docker commit quirky_proskuriakova edenlee94/ros2_ci:first
+        run: |
+          container_id=$(docker ps -q | head -n 1)
+          docker commit $container_id edenlee94/ros2_ci:first
         
 
       # docker hub 퍼블리시
