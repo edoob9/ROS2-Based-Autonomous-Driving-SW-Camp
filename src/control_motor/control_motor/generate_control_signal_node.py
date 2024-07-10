@@ -52,7 +52,7 @@ SUB_TOPIC_NAME = "topic_lane_info"
 PUB_TOPIC_NAME = "topic_contol_signal"
 
 # 차량의 속도 (-255 ~ +255) , 음수면 후진, 양수면 전진
-SPEED = 50
+SPEED = 100
 
 # 급격한 모터 속도 변화 완화(클수록 더욱 부드럽게 속도 변화)
 SPEED_CHANGE_SMOOTHNESS = 30
